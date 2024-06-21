@@ -38,7 +38,7 @@ A continaucion dejo para ustedes la entrega de la prueba tecnica, la cual consis
          ```
  ## __Uso de la vista de la aplicación__
 
-![Alt text](https://res.cloudinary.com/duzyd4ju7/image/upload/v1718975219/Screenshot_2024-06-21_080547_sikhn0.png "Home Page")
+![Alt text](https://res.cloudinary.com/duzyd4ju7/image/upload/v1718975219/Screenshot_2024-06-21_075542_xeahn6.png "Home Page")
 
 ![Alt text](https://res.cloudinary.com/duzyd4ju7/image/upload/v1718975219/Screenshot_2024-06-21_080547_sikhn0.png "Client Page")
 
