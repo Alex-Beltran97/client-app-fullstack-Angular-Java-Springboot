@@ -29,7 +29,8 @@ A continaucion dejo para ustedes la entrega de la prueba tecnica, la cual consis
      ```
       Se habilitara el backend, entro del cual podemos ejecutar desde __"Postman"__ las 2 siguientes peticiones HTTP.
        - GET: http://localhost:8090/api/v1/clients (Obtener todos los clientes)
-       - GET: http://localhost:8090/api/v1/clients/c/23445322 (Obtener todos los clientes)
+       - GET: http://localhost:8090/api/v1/clients/c/23445322 (Obtener todos los clientes).
+     
     2.2. Nos ubicamos en la carpeta __"server"__ y desde la terminal  ejecutamos el comando...
          ```
           ng serve -o
