@@ -16,6 +16,7 @@ public class ClientController {
     @Autowired
     private ClientService clientService;
 
+    @CrossOrigin
     @GetMapping
     public List<Client> getAllClients() {
         return clientService.findAll();
@@ -24,6 +25,11 @@ public class ClientController {
     @GetMapping("/{docType}/{docNumber}")
     public Optional<Client> getClientByDocTypeAndDocNumber(@PathVariable char docType, @PathVariable Integer docNumber) {
         return clientService.findClientByDocTypeAndDocNumber(docType, docNumber);
+    }
+    @CrossOrigin
+    @DeleteMapping("/{docType}/{docNumber}")
+    public void deleteClient(@PathVariable char docType, @PathVariable Integer docNumber) {
+        clientService.deleteClient(docType, docNumber);
     }
 
 }

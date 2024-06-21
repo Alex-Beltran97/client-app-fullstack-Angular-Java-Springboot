@@ -24,4 +24,17 @@ public class ClientService {
         return clientRespository.findByDocTypeAndDocNumber(docType, docNumber);
     }
 
+    public void saveClient(Client client) {
+        clientRespository.save(client);
+    }
+    public void deleteClient(char docType, Integer docNumber) {
+        Optional<Client> optionalUser = clientRespository.findByDocTypeAndDocNumber(docType, docNumber);
+
+        if (optionalUser.isPresent()) {
+            clientRespository.deleteById(optionalUser.get().getId());
+        } else {
+            throw new RuntimeException();
+        }
+    }
+
 }
