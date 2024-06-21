@@ -23,6 +23,7 @@ A continaucion dejo para ustedes la entrega de la prueba tecnica, la cual consis
 ## __Indicaciones para ejecutar este proyecto__
   1. clonar este repositorio desde las opciones de __GitHub__
   2. Una vez clonado ejecutaremos en el siguiente orden:
+
     2.1. Nos ubicamos en la carpeta __"server"__ y desde la terminal ejecutamos el comando...
      ```
      docker-compose up -d
