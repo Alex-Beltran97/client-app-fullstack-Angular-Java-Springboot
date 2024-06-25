@@ -1,8 +1,10 @@
 package com.clients.api.clients_api.controller;
 
 import com.clients.api.clients_api.dto.Client;
-import com.clients.api.clients_api.dto.DocType;
+import com.clients.api.clients_api.exception.BadRequestException;
+import com.clients.api.clients_api.exception.ClientNotFoundException;
 import com.clients.api.clients_api.service.ClientService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,12 +25,17 @@ public class ClientController {
     }
     @CrossOrigin
     @GetMapping("/{docType}/{docNumber}")
-    public Optional<Client> getClientByDocTypeAndDocNumber(@PathVariable char docType, @PathVariable Integer docNumber) {
+    public Client getClientByDocTypeAndDocNumber(@PathVariable String docType, @PathVariable String docNumber) throws ClientNotFoundException {
         return clientService.findClientByDocTypeAndDocNumber(docType, docNumber);
     }
     @CrossOrigin
+    @PostMapping
+    public void createClient(@Valid @RequestBody Client client) throws BadRequestException {
+        clientService.saveClient(client);
+    }
+    @CrossOrigin
     @DeleteMapping("/{docType}/{docNumber}")
-    public void deleteClient(@PathVariable char docType, @PathVariable Integer docNumber) {
+    public void deleteClient(@PathVariable String docType, @PathVariable String docNumber) throws ClientNotFoundException {
         clientService.deleteClient(docType, docNumber);
     }
 
