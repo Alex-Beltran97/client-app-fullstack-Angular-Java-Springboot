@@ -1,5 +1,5 @@
 -- auto-generated definition
-create table client
+CREATE TABLE IF NOT EXISTS client
 (
     doc_number       integer      not null
         unique,
