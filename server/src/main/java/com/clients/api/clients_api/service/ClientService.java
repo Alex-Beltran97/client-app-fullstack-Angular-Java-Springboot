@@ -22,8 +22,18 @@ public class ClientService {
     }
 
     // Find clients by their document type and document number
-    public Client findClientByDocTypeAndDocNumber(String docType, String docNumber) throws ClientNotFoundException {
+    public Client findClientByDocTypeAndDocNumber(String docType, Integer docNumber) throws ClientNotFoundException, BadRequestException {
         Optional<Client> client = clientRespository.findByDocTypeAndDocNumber(docType.toLowerCase(), docNumber);
+
+        String docNumberStr = String.valueOf(docNumber);
+
+        if (docNumberStr.length() < 8 || docNumberStr.length() > 11) {
+            throw new BadRequestException("docNumber must be between 8 and 11 characters");
+        };
+
+        if (!docType.equalsIgnoreCase("c") && !docType.equalsIgnoreCase("p")) {
+            throw new BadRequestException("docType not valid, set either 'C' or 'P'");
+        };
 
         if (client.isEmpty()) {
             throw new ClientNotFoundException("Client not found!");
@@ -33,14 +43,15 @@ public class ClientService {
     }
 
     // Creating clients into database
-    public void saveClient(Client client) throws BadRequestException {
+    public Client saveClient(Client client) throws BadRequestException {
         if (!client.getDocType().equalsIgnoreCase("c") && !client.getDocType().equalsIgnoreCase("p")) {
             throw new BadRequestException("docNumber must be either 'C' or 'P'");
         }
         client.setDocType(client.getDocType().toLowerCase());
         clientRespository.save(client);
+        return client;
     }
-    public void deleteClient(String docType, String docNumber) throws ClientNotFoundException {
+    public void deleteClient(String docType, Integer docNumber) throws ClientNotFoundException {
         Optional<Client> client = clientRespository.findByDocTypeAndDocNumber(docType.toLowerCase(), docNumber);
         if (client.isEmpty()) {
             throw new ClientNotFoundException("Client not found!");

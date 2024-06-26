@@ -8,5 +8,5 @@ import java.util.Optional;
 
 @Repository
 public interface ClientRespository extends JpaRepository<Client, Long> {
-    public Optional<Client> findByDocTypeAndDocNumber(String docType, String docNumber);
+    public Optional<Client> findByDocTypeAndDocNumber(String docType, Integer docNumber);
 }

@@ -3,12 +3,18 @@ package com.clients.api.clients_api.dto;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 
 @Data
 @Entity
 @Table
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,9 +24,7 @@ public class Client {
     @NotBlank(message = "docType is mandatory")
     @Length(max = 1)
     private String docType;
-    @Length(min = 8,max = 11)
-    @NotBlank(message = "docNumber is mandatory")
-    private String docNumber;
+    private Integer docNumber;
 
     // Mandatory fields
     @NotBlank(message = "firstName is mandatory")
@@ -52,11 +56,11 @@ public class Client {
         this.docType = docType;
     }
 
-    public String getDocNumber() {
+    public Integer getDocNumber() {
         return docNumber;
     }
 
-    public void setDocNumber(String docNumber) {
+    public void setDocNumber(Integer docNumber) {
         this.docNumber = docNumber;
     }
 

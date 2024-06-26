@@ -42,4 +42,12 @@ public class RestResponseEntityHandler extends ResponseEntityExceptionHandler {
         });
         return ResponseEntity.status(this.code).body(errors);
     }
+
+    @ExceptionHandler(Exception.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public ResponseEntity<ErrorMessage> internalServerError(Exception ex) {
+        this.code = HttpStatus.INTERNAL_SERVER_ERROR;
+        ErrorMessage message = new ErrorMessage(this.code, ex.getMessage());
+        return ResponseEntity.status(this.code).body(message);
+    }
 }

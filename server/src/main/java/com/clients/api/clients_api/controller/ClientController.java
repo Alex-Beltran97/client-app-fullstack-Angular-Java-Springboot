@@ -25,7 +25,7 @@ public class ClientController {
     }
     @CrossOrigin
     @GetMapping("/{docType}/{docNumber}")
-    public Client getClientByDocTypeAndDocNumber(@PathVariable String docType, @PathVariable String docNumber) throws ClientNotFoundException {
+    public Client getClientByDocTypeAndDocNumber(@PathVariable String docType, @PathVariable Integer docNumber) throws ClientNotFoundException, BadRequestException {
         return clientService.findClientByDocTypeAndDocNumber(docType, docNumber);
     }
     @CrossOrigin
@@ -35,7 +35,7 @@ public class ClientController {
     }
     @CrossOrigin
     @DeleteMapping("/{docType}/{docNumber}")
-    public void deleteClient(@PathVariable String docType, @PathVariable String docNumber) throws ClientNotFoundException {
+    public void deleteClient(@PathVariable String docType, @PathVariable Integer docNumber) throws ClientNotFoundException {
         clientService.deleteClient(docType, docNumber);
     }
 
