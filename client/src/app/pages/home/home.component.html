@@ -12,7 +12,7 @@
 >
   <form
     class="border has-validation rounded-2 p-2"
-    [formGroup]="form"
+    [formGroup]="clientForm"
     (submit)="handleSubmit()"
   >
     <p
@@ -61,7 +61,7 @@
     <button
       class="w-100 my-2 btn btn-primary"
       type="submit"
-      [disabled]="form.invalid"
+      [disabled]="clientForm.invalid"
     >Buscar</button>
   </form>
 </main>

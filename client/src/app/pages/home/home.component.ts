@@ -8,13 +8,13 @@ import {Router} from "@angular/router";
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
-  form: FormGroup;
+  clientForm: FormGroup;
 
   constructor(
     private fb: FormBuilder,
     private router: Router
   ) {
-    this.form = this.fb.group({
+    this.clientForm = this.fb.group({
       docType: ["",
         [
           Validators.required,
@@ -33,14 +33,14 @@ export class HomeComponent {
   }
 
   get getDocType() {
-    return this.form.get("docType");
+    return this.clientForm.get("docType");
   }
   get getDocNumber() {
-    return this.form.get("docNumber");
+    return this.clientForm.get("docNumber");
   }
 
   handleSubmit() {
-    if (this.form.valid) {
+    if (this.clientForm.valid) {
       const {docType, docNumber} = {
         docType: this.getDocType?.value.trim(),
         docNumber: this.getDocNumber?.value .trim(),
