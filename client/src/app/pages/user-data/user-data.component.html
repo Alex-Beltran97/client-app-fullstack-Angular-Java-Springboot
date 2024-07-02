@@ -1,0 +1,50 @@
+<header class="text-center">
+  <h1>Datos de usuario</h1>
+</header>
+<main
+  class="
+  container
+  d-flex
+  flex-column
+  align-items-center
+  justify-content-center
+  min-vh-100
+"
+>
+  <form
+    *ngIf="clientData().length > 0"
+    class="border rounded-2 p-2 w-75"
+  >
+    <p class="fw-semibold">Informacion basica</p>
+    <div
+      class="d-flex flex-column"
+      *ngFor="let item of clientData()"
+    >
+      <label
+        class="text-body-tertiary form-label"
+        *ngIf="item[1]"
+        for="value"
+      >{{ item[0] }}</label>
+      <input
+        class="form-control"
+        disabled
+        *ngIf="item[1]"
+        id="value"
+        type="text"
+        [value]="item[1] | formatDocType"
+      />
+    </div>
+  </form>
+  <div
+    class="text-center border border-black p-4 rounded-4"
+    [hidden]="isHidden"
+  >
+    <h2>Cliente no encontrado</h2>
+    <i class="bi bi-emoji-frown fa-10x" [ngClass]="'icon-width'"></i>
+    <p>Lo sentimos, el cliente que buscas no se encuentra registrado en la base de datos.</p>
+  </div>
+  <button
+    class="btn btn-primary align-self-stretch m-2"
+    (click)="getBack()"
+  >Regresar</button>
+</main>

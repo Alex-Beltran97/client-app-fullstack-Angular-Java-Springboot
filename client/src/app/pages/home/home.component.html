@@ -1,0 +1,67 @@
+<header class="text-center">
+  <h1>Buscar usuario</h1>
+</header>
+<main
+  class="
+  container
+  d-flex
+  align-items-center
+  justify-content-center
+  vh-100
+"
+>
+  <form
+    class="border has-validation rounded-2 p-2"
+    [formGroup]="form"
+    (submit)="handleSubmit()"
+  >
+    <p
+      class="text-body-tertiary fw-semibold"
+    >Todos los campos son obligatorios</p>
+    <div class="my-2">
+      <label
+        class="form-label"
+        for="docType"
+      >Tipo de documento:</label>
+      <select
+        class="w-100 form-select"
+        id="docType"
+        formControlName="docType"
+        [ngClass]="{'is-invalid': getDocType?.invalid && getDocType?.touched}"
+      >
+        <option value="">Seleccione su tipo de documento...</option>
+        <option value="c">Cedula de ciudadania</option>
+        <option value="p">Pasaporte</option>
+      </select>
+      <div class="invalid-feedback" *ngIf="getDocType?.invalid && getDocType?.touched">
+        <p *ngIf="getDocType?.errors?.required!"
+        >Debe seleccionar un tipo de documento de la lista.</p>
+        <p *ngIf="getDocType?.errors?.pattern!">Tipo de documento invalido.</p>
+      </div>
+    </div>
+    <div class="my-2">
+      <label
+        class="form-label"
+        for="docNumber"
+      >Tipo de documento:</label>
+      <input
+        class="w-100 form-control"
+        id="docNumber"
+        placeholder="Introdusca su numero de documento aqui..."
+        formControlName="docNumber"
+        [ngClass]="{'is-invalid': getDocNumber?.invalid && getDocNumber?.touched}"
+      />
+      <div class="invalid-feedback" *ngIf="getDocNumber?.invalid && getDocNumber?.touched">
+        <p *ngIf="getDocNumber?.errors?.required!">Debe ingresar un numero de documento</p>
+        <p *ngIf="getDocNumber?.errors?.minLength!">El numero de documento debe tener minimo 8 caracteres</p>
+        <p *ngIf="getDocNumber?.errors?.maxLength!">El numero de documento no puede superar los 11 caracteres</p>
+        <p *ngIf="getDocNumber?.errors?.pattern!">El numero de documento no debe contener espacios ni letras</p>
+      </div>
+    </div>
+    <button
+      class="w-100 my-2 btn btn-primary"
+      type="submit"
+      [disabled]="form.invalid"
+    >Buscar</button>
+  </form>
+</main>
